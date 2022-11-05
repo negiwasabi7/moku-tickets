@@ -2,9 +2,9 @@ import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { dateString, sameDate } from '../utils/date';
-import returned_history_db from '../services/returned_history_db';
 import { fetchMember, updateTickets } from '../services/members_table';
 import { addUsedHistory, fetchUsedHistories } from '../services/used_history_table';
+import { fetchReturnedHistories } from '../services/returned_history_table';
 
 const Member = () => {
   const navigate = useNavigate();
@@ -32,10 +32,14 @@ const Member = () => {
           setEnableUsing(false);
         }
       });
+
+      fetchReturnedHistories(member.id).then((return_histories) => {
+        setReturnedHistories(return_histories);
+      });
     });
 
-    const returnedHistories = returned_history_db.get_returned_histories(member.member_id);
-    setReturnedHistories(returnedHistories);
+    // const returnedHistories = returned_history_db.get_returned_histories(member.member_id);
+    // setReturnedHistories(returnedHistories);
   }, []);
 
   const buy = () => {
@@ -110,7 +114,7 @@ const Member = () => {
         <h2>返却履歴</h2>
         <div>
           {returnHistories.map((history) => (
-            <div key={history.member_id}>{`${dateString(history.returned_date)}`}</div>
+            <div key={history.id}>{`${dateString(history.return_date)}`}</div>
           ))}
         </div>
       </div>

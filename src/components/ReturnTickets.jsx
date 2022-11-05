@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import member_db from '../services/member_db';
-import returned_history_db from '../services/returned_history_db';
+import { updateTickets } from '../services/members_table';
+import { addReturnedHistory } from '../services/returned_history_table';
 
 export const ReturnTickets = () => {
   const navigate = useNavigate();
@@ -9,15 +9,17 @@ export const ReturnTickets = () => {
   const member = location.state;
 
   const returnTickets = () => {
-    const newMember = { ...member, tickets: 0 };
-    member_db.update_member(newMember);
-    //書き換え　チケットを0にする async updateTickets({ id, tickets })
+    updateTickets({ id: member.id, tickets: 0 });
 
     const today = new Date(Date.now());
-    returned_history_db.create_returned_history(member.member_id, today);
-    //書き換え　返却履歴を記録する async addReturnedHistory({ member_id, return_date, tickets, refund })
-
-    navigate(`/member/${member.member_id}`);
+    addReturnedHistory({
+      member_id: member.id,
+      return_date: today,
+      tickets: member.tickets,
+      refund: (member.tickets - 2) * 100,
+    }).then(() => {
+      navigate(`/member/${member.id}`);
+    });
   };
 
   const cancel = () => {

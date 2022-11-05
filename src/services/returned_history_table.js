@@ -12,7 +12,7 @@ export const fetchReturnedHistories = async (member_id) => {
     .from('returned_history')
     .select('*')
     .eq('member_id', member_id)
-    .order('returned_date', { ascending: false });
+    .order('return_date', { ascending: false });
 
   console.log(`status:${status} statusText:${statusText}`);
   if (error) {
@@ -20,7 +20,7 @@ export const fetchReturnedHistories = async (member_id) => {
     return null;
   } else {
     returned_histories.forEach((returned_history) => {
-      returned_history.returned_date = new Date(returned_history.returned_date);
+      returned_history.return_date = new Date(returned_history.return_date);
     });
     return returned_histories;
   }
