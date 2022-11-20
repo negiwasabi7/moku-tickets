@@ -1,13 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
+import { supabase } from '../services/supabase_api';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); //デフォルトの動作を抑制する
-    //ログイン処理
+    let { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      console.log(error.message);
+    } //ログイン処理
   };
   const handleEmailChange = (e) => {
     // console.log(e.target.value);
@@ -24,7 +31,8 @@ const Auth = () => {
 
   //メールアドレス:trim()した後、空ではない事、正しいフォーマットであること
   function validateEmail(email) {
-    return email.trim().length > 0;
+    const regex = /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+    return regex.test(email.trim());
   }
 
   //パスワード：空ではないこと
