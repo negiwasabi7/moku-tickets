@@ -1,0 +1,73 @@
+import React from 'react';
+import { useState } from 'react';
+import { supabase } from '../services/supabase_api';
+
+const UserRegistration = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault(); //デフォルトの動作を抑制する
+    let { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+    if (error) {
+      console.log(error.message);
+    }
+  };
+  const handleEmailChange = (e) => {
+    // console.log(e.target.value);
+    setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  //入力値（メールアドレス、パスワード）の検証
+  const validate = () => {
+    return validateEmail(email) && validatePassword(password);
+  };
+
+  //メールアドレス:trim()した後、空ではない事、正しいフォーマットであること
+  function validateEmail(email) {
+    const regex = /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+    return regex.test(email.trim());
+  }
+
+  //パスワード：空ではないこと
+  function validatePassword(password) {
+    return password.length > 0;
+  }
+
+  return (
+    <>
+      <div>
+        <h1>アカウント作成</h1>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>
+            メールアドレス:
+            <input type="email" id="email" value={email} onChange={handleEmailChange} />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            パスワード:
+            <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+          </label>
+        </div>
+
+        <div>
+          <button type="submit" disabled={!validate()}>
+            アカウント作成
+          </button>
+        </div>
+      </form>
+    </>
+  );
+};
+
+export default UserRegistration;
