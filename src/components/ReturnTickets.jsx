@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { updateTickets } from '../services/members_table';
 import { addReturnedHistory } from '../services/returned_history_table';
+import Navigation from './Navigation';
 
 export const ReturnTickets = () => {
   const navigate = useNavigate();
@@ -28,9 +29,7 @@ export const ReturnTickets = () => {
 
   return (
     <>
-      <div>
-        <h1>チケット返却</h1>
-      </div>
+      <Navigation title="チケット返却" />
       <div>名前: {member.name}</div>
       <div>回数券残り枚数: {member.tickets}枚</div>
       <div>

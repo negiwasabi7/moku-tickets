@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { fetchMembers } from '../services/members_table';
+import Navigation from './Navigation';
 
 const SName = styled.div`
     padding: 5px;
@@ -42,9 +43,7 @@ const MemberList = () => {
 
   return (
     <>
-      <div>
-        <h1>メンバー一覧</h1>
-      </div>
+      <Navigation title="メンバー一覧" />
       <hr />
       <Link to="/member_registration">メンバー登録</Link>
       <hr />
