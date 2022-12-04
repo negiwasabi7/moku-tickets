@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { fetchMembers } from '../services/members_table';
 import Navigation from './Navigation';
 
-const SName = styled.div`
+const SName = styled.li`
     padding: 5px;
     margin: 0 25%;
     list-style-type: none;
@@ -47,12 +47,13 @@ const MemberList = () => {
       <hr />
       <Link to="/member_registration">メンバー登録</Link>
       <hr />
-
-      {members.map((member) => (
-        <SName id={member.id} key={member.id} onClick={listClickHandler}>
-          {`${member.name}`}
-        </SName>
-      ))}
+      <ul>
+        {members.map((member) => (
+          <SName id={member.id} key={member.id} onClick={listClickHandler}>
+            {`${member.name}`}
+          </SName>
+        ))}
+      </ul>
     </>
   );
 };
