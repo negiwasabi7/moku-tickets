@@ -5,6 +5,8 @@ import { SessionContext } from '../App.js';
 
 const SContainer = styled.div`
     background-color: pink;
+    display: flex;
+    justify-content: space-between;
     `;
 
 const Navigation = (props) => {
