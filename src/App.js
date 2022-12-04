@@ -48,7 +48,7 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/user_registration" element={<UserRegistration />} />
           <Route element={<ProtectedRoute session={session} />}>
-            <Route exact path="/" element={<MemberList session={session} />} />
+            <Route exact path="/" element={<MemberList />} />
             <Route exact path="/member/:member_id" element={<Member />} />
             <Route exact path="/member_registration" element={<MemberRegistration />} />
             <Route path="/return_tickets" element={<ReturnTickets />} />
