@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { addMember } from '../services/members_table';
+import Button from './Button';
 import Navigation from './Navigation';
 
 const MemberRegistration = () => {
@@ -73,9 +74,9 @@ const MemberRegistration = () => {
         </div>
 
         <div>
-          <button type="submit" disabled={!validateName()}>
+          <Button type="submit" disabled={!validateName()}>
             登録
-          </button>
+          </Button>
         </div>
       </form>
 

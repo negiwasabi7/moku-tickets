@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Name = ({ name, age }) => {
-    return (
-        <div>{`${name} ${age}`}</div>
-    )
-}
+  return <div>{`${name} ${age}`}</div>;
+};
 
-export default Name
+export default Name;

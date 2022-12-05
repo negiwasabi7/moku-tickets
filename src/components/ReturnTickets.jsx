@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { updateTickets } from '../services/members_table';
 import { addReturnedHistory } from '../services/returned_history_table';
+import Button from './Button';
 import Navigation from './Navigation';
 
 export const ReturnTickets = () => {
@@ -24,7 +25,7 @@ export const ReturnTickets = () => {
   };
 
   const cancel = () => {
-    navigate(`/member/${member.member_id}`);
+    navigate(`/member/${member.id}`);
   };
 
   return (
@@ -35,8 +36,8 @@ export const ReturnTickets = () => {
       <div>
         回数券{member.tickets}回分 {(member.tickets - 2) * 100} 円を返却します
       </div>
-      <button onClick={returnTickets}>返却</button>
-      <button onClick={cancel}>キャンセル</button>
+      <Button onClick={returnTickets}>返却</Button>
+      <Button onClick={cancel}>キャンセル</Button>
       <div>
         <Link to="/">メンバー一覧へ</Link>
       </div>
