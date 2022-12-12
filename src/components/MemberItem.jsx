@@ -2,16 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SListItem = styled.li`
-    padding: 5px;
-    margin: 0 25%;
     list-style-type: none;
+    padding: 10px 10px;
+    margin: 0px 5%;
     background-color: aqua;
-    border-bottom: 1px gray dotted;
     cursor: pointer;
-    
+    border-bottom: 1px gray dotted;
+    font-weight: bold;
+
     :last-child {
-        border-bottom: none;
-    }
+      border-bottom: none;
+  }
     `;
 
 const MemberItem = ({ item, onClick }) => {

@@ -4,10 +4,13 @@ import { SessionContext } from '../App.js';
 import icon from '../images/icon.png';
 
 const SContainer = styled.div`
-    background-color: pink;
-    display: flex;
-    justify-content: space-between;
-    `;
+  display: flex;
+  justify-content: space-between;
+  background-color: #231942;
+  padding: 2px 10px;
+  color: #e0b1cb;
+  font-weight: bold;
+`;
 
 const Header = () => {
   const session = useContext(SessionContext);

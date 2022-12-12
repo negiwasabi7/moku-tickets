@@ -5,9 +5,11 @@ import { SessionContext } from '../App.js';
 import Button from './Button';
 
 const SContainer = styled.div`
-    background-color: pink;
     display: flex;
     justify-content: space-between;
+    background-color: #372c5a;
+    color: #e0b1cb;
+    font-weight: bold;
     `;
 
 const Navigation = (props) => {
