@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/moku-tickets/static/css/main.dd7c563e.css",
-    "main.js": "/moku-tickets/static/js/main.90e53828.js",
+    "main.css": "/moku-tickets/static/css/main.74a66592.css",
+    "main.js": "/moku-tickets/static/js/main.7d9402b0.js",
     "static/js/787.53b866f8.chunk.js": "/moku-tickets/static/js/787.53b866f8.chunk.js",
     "index.html": "/moku-tickets/index.html",
-    "main.dd7c563e.css.map": "/moku-tickets/static/css/main.dd7c563e.css.map",
-    "main.90e53828.js.map": "/moku-tickets/static/js/main.90e53828.js.map",
+    "main.74a66592.css.map": "/moku-tickets/static/css/main.74a66592.css.map",
+    "main.7d9402b0.js.map": "/moku-tickets/static/js/main.7d9402b0.js.map",
     "787.53b866f8.chunk.js.map": "/moku-tickets/static/js/787.53b866f8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd7c563e.css",
-    "static/js/main.90e53828.js"
+    "static/css/main.74a66592.css",
+    "static/js/main.7d9402b0.js"
   ]
 }
